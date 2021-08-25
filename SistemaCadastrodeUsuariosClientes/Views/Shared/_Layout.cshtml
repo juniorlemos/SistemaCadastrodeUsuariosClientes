@@ -35,7 +35,18 @@
                     @Html.ActionLink("Usuario", "Inserir", "Usuarios", null, new { @class = "nav-link" })
 
                 </li>
+                <li class="nav-item d-none d-sm-inline-block">
+                    @Html.ActionLink("Index", "Index", "Usuarios", null, new { @class = "nav-link" })
 
+                </li>
+                <li class="nav-item d-none d-sm-inline-block">
+                    @Html.ActionLink("Atualizar", "Atualizar", "Usuarios", null, new { @class = "nav-link" })
+
+                </li>
+                <li class="nav-item d-none d-sm-inline-block">
+                    @Html.ActionLink("Visualizar", "Visualizar", "Usuarios", null, new { @class = "nav-link" })
+
+                </li>
 
             </ul>
 
@@ -291,8 +302,8 @@
     <script src="~/js/adminlte.min.js"></script>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
-
-
+    <script src="~/jquery-ajax-unobtrusive/jquery.unobtrusive-ajax.js"></script>
+    <script src="~/jquery-ajax-unobtrusive/jquery.unobtrusive-ajax.min.js"></script>
 
     @await RenderSectionAsync("Scripts", required: false)
 </body>

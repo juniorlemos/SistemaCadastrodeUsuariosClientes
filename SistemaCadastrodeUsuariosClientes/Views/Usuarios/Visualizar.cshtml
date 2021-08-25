@@ -1,0 +1,60 @@
+﻿
+
+<h1>Visualizar</h1>
+
+
+
+<div>
+    <h1> hello from uisualizar</h1>
+
+    <input type="text"  id="txtBox"/>
+    <label id="lbl"></label>
+
+    <input type="button" onclick="BtnClick()" value="Clik-me"/>
+    
+  </div>
+
+
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script>
+
+
+        //$(document).ready(function () {
+        //    $("#btnsubmit").click(function (e) {
+        //        //Serialize the form datas.
+        //      //  var valdata = $("#friendform").serialize();
+        //        //to get alert popup
+        //        alert("Entrou aqui");
+        //        //alert(valdata);
+        //        $.ajax({
+        //            url: "/Usuarios/Visualizar",
+        //            type: "GET",
+        //            dataType: 'json',
+        //            contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+        //            //data: valdata,
+        //            success: function (msg) {
+
+        //                $('#friendform').each(function () {
+        //                    this.reset();
+        //                    alert("Agora aqui");
+        //                });
+
+        //            },
+        //            error: function (req, status, error) {
+        //                alert(error);
+        //            }
+                   
+        //        });
+
+
+        //         alert("e por ultimo  aqui");
+        //    });
+        //}); 
+    </script>
+
+}

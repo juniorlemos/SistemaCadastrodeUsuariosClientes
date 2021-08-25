@@ -1,7 +1,76 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-   
-}
+﻿@model SistemaCadastrodeUsuariosClientes.Models.Usuario
+
 <h2>Inserir</h2>
+
+
+
+
+
+<form id="friendform">
+        <table>
+            <tr>
+                <td>Friend Name</td>
+                <td><input id="nomeCompleto" name="NomeCompleto" type="text" /></td>
+            </tr>
+            <tr>
+                <td>Phone</td>
+                <td><input id="apelido" name="Apelido" type="text" /></td>
+            </tr>
+            <tr>
+                <td>State</td>
+                <td><input id="email" name="Email" type="text" /></td>
+            </tr>
+            <tr>
+                <td>State</td>
+                <td><input id="telefone" name="TelefoneDeContato" type="text" /></td>
+            </tr>
+        </table>
+        <input id="btnsubmit" type="button" value="Submit" />
+    </form>
+
+
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script src="~/jquery-ajax-unobtrusive/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="~/jquery-ajax-unobtrusive/jquery.unobtrusive-ajax.js"></script>
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+   <script>
+
+
+            $(document).ready(function () {
+                $("#btnsubmit").click(function (e) {
+                    //Serialize the form datas.
+                    var valdata = $("#friendform").serialize();
+                    //to get alert popup
+                    alert(valdata);
+                    $.ajax({
+                        url: "/Usuarios/Inserir",
+                        type: "POST",
+                        dataType: 'json',
+                        contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+                        data: valdata,
+                        success: function ( res) {
+
+                            alert(res);
+                            $('#friendform').each(function () {
+                                this.reset();
+                            });
+
+                        },
+                        error: function (req, status, error) {
+                            alert(error);
+                        }
+                    });
+
+
+
+                });
+            });
+        </script>
+
+}

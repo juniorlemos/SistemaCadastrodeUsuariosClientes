@@ -11,7 +11,9 @@ namespace SistemaCadastrodeUsuariosClientes.Models
         public string NomeCompleto { get; set; }
         public string Apelido { get; set; }
         [Key]
+        [Required]
+        [MinLength (3)]
         public string Email { get; set; }
-        public int TelefoneDeContato { get; set; }
+        public string TelefoneDeContato { get; set; }
     }
 }

@@ -1,0 +1,57 @@
+﻿
+@model SistemaCadastrodeUsuariosClientes.Models.Usuario
+
+<h1>Deletar</h1>
+
+
+<form id="friendform">
+    <table>
+       
+        <tr>
+            <td>State</td>
+            <td><input id="email" name="Email" type="text" /></td>
+        </tr>
+        
+    </table>
+    <input id="btnsubmit" type="button" value="Submit" />
+</form>
+
+
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script>
+
+
+        $(document).ready(function () {
+            $("#btnsubmit").click(function (e) {
+                //Serialize the form datas.
+                var valdata = $("#friendform").serialize();
+                //to get alert popup
+                alert(valdata);
+                $.ajax({
+                    url: "/Usuarios/Deletar",
+                    type: "DELETE",
+                    dataType: 'json',
+                    contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+                    data: valdata,
+                  //  success: function (msg) {
+                  //      console.log(msg);
+                 //   },
+               //     error: function (req, status, error) {
+              //          alert(error);
+                //    }
+                });
+
+                 $('#friendform').each(function () {
+                    this.reset();
+                });
+
+            });
+        });
+    </script>
+
+}

@@ -5,3 +5,82 @@
 }
 
 <h1> Usuario Index</h1>
+
+<div>
+    <h1> hello from uisualizar</h1>
+
+    <div>
+        <h2>Nome</h2> - <h2 id="nome"></h2>
+        <h2>Apelido</h2> - <h2 id="apelido"></h2>
+        <h2>Email</h2> - <h2 id="email"></h2>
+        <h2>Telefone</h2> - <h2 id="telefone"></h2>
+    </div>
+
+    <input type="button" onclick="BtnClick()" value="Clik-me" />
+
+</div>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script>
+
+        function BtnClick() {
+
+            $.ajax({
+                url: "/Usuarios/Visualizar",
+                method: "GET",
+                success: function (data) {
+                    console.log(data);
+                    alert("isso ai");
+                    dados = JSON.parse(data);
+                    console.log(dados);
+                    alert(dados);
+                    var con = JSON.stringify(dados);
+                    alert(con);
+                   
+                },
+                error: function (err) {
+                    console.error(error)
+                }
+
+
+            })
+          
+        }
+            //$(document).ready(function () {
+            //    $("#btnsubmit").click(function (e) {
+            //        //Serialize the form datas.
+            //      //  var valdata = $("#friendform").serialize();
+            //        //to get alert popup
+            //        alert("Entrou aqui");
+            //        //alert(valdata);
+            //        $.ajax({
+            //            url: "/Usuarios/Visualizar",
+            //            type: "GET",
+            //            dataType: 'json',
+            //            contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+            //            //data: valdata,
+            //            success: function (msg) {
+
+            //                $('#friendform').each(function () {
+            //                    this.reset();
+            //                    alert("Agora aqui");
+            //                });
+
+            //            },
+            //            error: function (req, status, error) {
+            //                alert(error);
+            //            }
+
+            //        });
+
+
+            //         alert("e por ultimo  aqui");
+            //    });
+            //});
+    </script>
+
+}

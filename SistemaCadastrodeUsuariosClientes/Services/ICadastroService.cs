@@ -7,7 +7,7 @@ namespace SistemaCadastrodeUsuariosClientes.Services
 {
    public interface ICadastroService<TEntity> where TEntity : class
     {
-        Task Deletar(TEntity objeto);
+        Task Deletar(string id);
         Task Inserir(TEntity objeto);
         Task<TEntity> Visualizar(string chave);
         Task Editar(TEntity objeto);

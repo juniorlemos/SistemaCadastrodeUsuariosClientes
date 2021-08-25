@@ -18,8 +18,10 @@ namespace SistemaCadastrodeUsuariosClientes.Repositorys
 
         }
 
-        public async Task Deletar(Usuario entidade)
+        public async Task Deletar(string id)
         {
+
+            var entidade = await _context.Usuario.FindAsync(id);
             _context.Remove(entidade);
             await _context.SaveChangesAsync();
         }

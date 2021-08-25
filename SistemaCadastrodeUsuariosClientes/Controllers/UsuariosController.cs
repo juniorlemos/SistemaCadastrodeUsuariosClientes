@@ -1,10 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using SistemaCadastrodeUsuariosClientes.Models;
 using SistemaCadastrodeUsuariosClientes.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+
 
 namespace SistemaCadastrodeUsuariosClientes.Controllers
 {
@@ -14,7 +16,7 @@ namespace SistemaCadastrodeUsuariosClientes.Controllers
 
         public UsuariosController(ICadastroService<Usuario> service)
         {
-            _service = service;     
+            _service = service;
         }
 
         public IActionResult Index()
@@ -23,28 +25,68 @@ namespace SistemaCadastrodeUsuariosClientes.Controllers
         }
 
 
-       [HttpGet]
+        [HttpGet]
+        public async Task<IActionResult> Visualizar()
+        {
+
+            var res = await _service.Visualizar("elfo");
+
+            var json= JsonConvert.SerializeObject(res);
+
+            return Json(json);
+        }
+
+
+
+        [HttpGet]
         public IActionResult Inserir()
         {
             return View();
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Inserir([Bind("NomeCompleto,Apelido,Email,TelefoneDeContato")] Usuario usuario)
         {
-            if (ModelState.IsValid)
-            {
-                
-                await _service.Inserir(usuario);
-           
-                return RedirectToAction(nameof(Index));
-            }
-            return View(usuario);
+
+            await _service.Inserir(usuario);
+
+            return Json(new { nome="deuCerto"} );
+
+        }
+
+
+        [HttpGet]
+        public IActionResult Atualizar()
+        {
+            return View();
+        }
+
+        [HttpPut]
+        public async Task<IActionResult> Atualizar([Bind("NomeCompleto,Apelido,Email,TelefoneDeContato")] Usuario usuario)
+        {
+
+            await _service.Editar(usuario);
+
+            return RedirectToAction(nameof(Inserir));
+
         }
 
 
 
+        [HttpGet]
+        public IActionResult Deletar()
+        {
+            return View();
+        }
+
+
+        [HttpDelete]
+        public async Task<IActionResult> Deletar(string email) 
+        {
+            await _service.Deletar(email);
+
+            return RedirectToAction(nameof(Index));
+        }
 
     }
 }

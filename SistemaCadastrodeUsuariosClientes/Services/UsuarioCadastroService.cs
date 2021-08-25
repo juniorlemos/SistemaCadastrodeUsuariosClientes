@@ -20,9 +20,9 @@ namespace SistemaCadastrodeUsuariosClientes.Services
         }
         
         
-        public async Task Deletar(Usuario usuario)
+        public async Task Deletar(string id)
         {
-           await _repository.Deletar(usuario);
+           await _repository.Deletar(id);
 
         }
 
