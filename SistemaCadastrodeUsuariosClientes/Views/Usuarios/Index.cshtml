@@ -32,15 +32,17 @@
             $.ajax({
                 url: "/Usuarios/Visualizar",
                 method: "GET",
+               
                 success: function (data) {
                     console.log(data);
-                    alert("isso ai");
-                    dados = JSON.parse(data);
-                    console.log(dados);
-                    alert(dados);
-                    var con = JSON.stringify(dados);
-                    alert(con);
-                   
+
+                    $("#nome").text(data['nomeCompleto']);
+
+                    $("#apelido").text(data['apelido']);
+
+                    $("#email").text(data['email']);
+
+                    $("#telefone").text(data['telefoneDeContato']);
                 },
                 error: function (err) {
                     console.error(error)

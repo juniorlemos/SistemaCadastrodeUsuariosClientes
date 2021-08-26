@@ -31,9 +31,9 @@ namespace SistemaCadastrodeUsuariosClientes.Controllers
 
             var res = await _service.Visualizar("elfo");
 
-            var json= JsonConvert.SerializeObject(res);
+            
 
-            return Json(json);
+            return Json(res);
         }
 
 
