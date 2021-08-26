@@ -7,12 +7,12 @@
 <div>
     <h1> hello from uisualizar</h1>
 
-    <input type="text"  id="txtBox"/>
+    <input type="text" id="txtBox" />
     <label id="lbl"></label>
 
-    <input type="button" onclick="BtnClick()" value="Clik-me"/>
-    
-  </div>
+    <input type="button" onclick="BtnClick()" value="Clik-me" />
+
+</div>
 
 
 
@@ -21,40 +21,74 @@
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 
+
+
+    <script>
+
+        function BtnClick() {
+
+            $.ajax({
+                url: "/Usuarios/Visualizar",
+                method: "GET",
+
+                success: function (data) {
+                    console.log(data);
+
+                    $("#nome").text(data['nomeCompleto']);
+
+                    $("#apelido").text(data['apelido']);
+
+                    $("#email").text(data['email']);
+
+                    $("#telefone").text(data['telefoneDeContato']);
+                },
+                error: function (err) {
+                    console.error(error)
+                }
+
+
+            })
+
+        }
+
+    </script>
+
+
+
     <script>
 
 
-        //$(document).ready(function () {
-        //    $("#btnsubmit").click(function (e) {
-        //        //Serialize the form datas.
-        //      //  var valdata = $("#friendform").serialize();
-        //        //to get alert popup
-        //        alert("Entrou aqui");
-        //        //alert(valdata);
-        //        $.ajax({
-        //            url: "/Usuarios/Visualizar",
-        //            type: "GET",
-        //            dataType: 'json',
-        //            contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
-        //            //data: valdata,
-        //            success: function (msg) {
+            //$(document).ready(function () {
+            //    $("#btnsubmit").click(function (e) {
+            //        //Serialize the form datas.
+            //      //  var valdata = $("#friendform").serialize();
+            //        //to get alert popup
+            //        alert("Entrou aqui");
+            //        //alert(valdata);
+            //        $.ajax({
+            //            url: "/Usuarios/Visualizar",
+            //            type: "GET",
+            //            dataType: 'json',
+            //            contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+            //            //data: valdata,
+            //            success: function (msg) {
 
-        //                $('#friendform').each(function () {
-        //                    this.reset();
-        //                    alert("Agora aqui");
-        //                });
+            //                $('#friendform').each(function () {
+            //                    this.reset();
+            //                    alert("Agora aqui");
+            //                });
 
-        //            },
-        //            error: function (req, status, error) {
-        //                alert(error);
-        //            }
-                   
-        //        });
+            //            },
+            //            error: function (req, status, error) {
+            //                alert(error);
+            //            }
+
+            //        });
 
 
-        //         alert("e por ultimo  aqui");
-        //    });
-        //}); 
+            //         alert("e por ultimo  aqui");
+            //    });
+            //});
     </script>
 
 }

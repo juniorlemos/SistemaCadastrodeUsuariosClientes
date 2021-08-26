@@ -35,36 +35,26 @@
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 
-    <script src="~/jquery-ajax-unobtrusive/jquery.unobtrusive-ajax.min.js"></script>
-    <script src="~/jquery-ajax-unobtrusive/jquery.unobtrusive-ajax.js"></script>
-    <script src="~/lib/jquery/dist/jquery.js"></script>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+   
    <script>
-
 
             $(document).ready(function () {
                 $("#btnsubmit").click(function (e) {
-                    //Serialize the form datas.
-                    var valdata = $("#friendform").serialize();
-                    //to get alert popup
-                    alert(valdata);
+                    
+                    var valdata = $("#friendform").serialize();                    
+                   
                     $.ajax({
                         url: "/Usuarios/Inserir",
-                        type: "POST",
-                        dataType: 'json',
-                        contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+                        type: "POST",                       
                         data: valdata,
-                        success: function ( res) {
-
-                            alert(res);
+                        success: function ( ) {
+                          
                             $('#friendform').each(function () {
                                 this.reset();
                             });
 
                         },
-                        error: function (req, status, error) {
-                            alert(error);
-                        }
+                        
                     });
 
 
