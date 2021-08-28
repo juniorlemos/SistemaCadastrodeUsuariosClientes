@@ -9,7 +9,7 @@ namespace SistemaCadastrodeUsuariosClientes.Services
     {
         Task Deletar(string id);
         Task Inserir(TEntity objeto);
-        Task<TEntity> Visualizar(string chave);
+        Task<List<TEntity>> Visualizar();
         Task Editar(TEntity objeto);
 
     }

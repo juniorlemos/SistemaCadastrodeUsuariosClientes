@@ -46,8 +46,9 @@ namespace SistemaCadastrodeUsuariosClientes.Repositorys
 
         }
 
-
-
-
+        public Task<List<Cliente>> Visualizar()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

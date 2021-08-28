@@ -41,14 +41,16 @@ namespace SistemaCadastrodeUsuariosClientes.Repositorys
                
         }
 
-        public async Task<Usuario> Visualizar(string chave)
+        public async Task<List<Usuario>> Visualizar( )
         {
-           return await _context.Usuario.FindAsync(chave);
-            
+           
+            return await _context.Usuario.AsNoTracking().ToListAsync();
+
+
         }
 
-       
 
-       
+
+
     }
 }

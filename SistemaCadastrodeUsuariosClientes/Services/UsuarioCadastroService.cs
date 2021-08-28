@@ -36,11 +36,10 @@ namespace SistemaCadastrodeUsuariosClientes.Services
           await  _repository.Inserir(usuario);
         }
 
-        public async Task<Usuario> Visualizar(string chave)
+        public async Task<List<Usuario>> Visualizar( )
         {
-            var usuario =await _repository.Visualizar(chave);
-            
-            return usuario;
+             return await _repository.Visualizar();
+                  
 
         }
     }

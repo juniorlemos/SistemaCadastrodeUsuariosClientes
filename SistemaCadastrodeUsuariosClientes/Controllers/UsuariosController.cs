@@ -29,7 +29,7 @@ namespace SistemaCadastrodeUsuariosClientes.Controllers
         public async Task<IActionResult> Visualizar()
         {
 
-            var res = await _service.Visualizar("elfo");
+            var res = await _service.Visualizar();
 
             
 

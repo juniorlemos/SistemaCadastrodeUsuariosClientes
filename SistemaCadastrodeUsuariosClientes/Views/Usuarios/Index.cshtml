@@ -4,6 +4,73 @@
 @{
 }
 
+
+
+
+
+
+
+<!-- Main content -->
+<!--<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">Bordered Table</h3>
+    </div>-->
+<!-- /.card-header -->
+<!--<div class="card-body">
+    <table id="tabelaUsuario"  class="table table-bordered">
+        <thead>
+            <tr>
+                <th style="width: 10px">#</th>
+                <th>Task</th>
+                <th>Progress</th>
+                <th >Label</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1.</td>
+                <td>Update software</td>
+                <td>   </td>
+
+                <td> </td>
+
+            </tr>
+            <tr>
+                <td>2.</td>
+                <td>Clean database</td>
+                <td>  </td>
+
+                <td></td>
+            </tr>
+            <tr>
+                <td>3.</td>
+                <td>Cron job running</td>
+                <td>   </td>
+
+                <td></td>
+            </tr>
+            <tr>
+                <td>4.</td>
+                <td>Fix and squish bugs</td>
+                <td>   </td>
+
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+</div>-->
+<!-- /.card-body -->
+<!--<div class="card-footer clearfix">
+        <ul class="pagination pagination-sm m-0 float-right">
+            <li class="page-item"><a class="page-link" href="#">«</a></li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item"><a class="page-link" href="#">»</a></li>
+        </ul>
+    </div>
+</div>-->
+
 <h1> Usuario Index</h1>
 
 <div>
@@ -20,29 +87,66 @@
 
 </div>
 
+<button type="button" class="btn btn-danger">DELETE</button>
+
+
+<table id="tabelaUsuario" class="table">
+    <thead>
+        <tr>
+        </tr>
+    </thead>
+    <tbody id="teste">
+    </tbody>
+</table>
+
+
+
+
 
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 
+
+
+
+
     <script>
 
+        $("#tabelaUsuario").ready(function () {
+          BtnClick();
+        });
+        
+                 
+    </script>
+
+        <script>
         function BtnClick() {
 
             $.ajax({
                 url: "/Usuarios/Visualizar",
                 method: "GET",
-               
+
                 success: function (data) {
                     console.log(data);
+                    console.log(data);
 
-                    $("#nome").text(data['nomeCompleto']);
 
-                    $("#apelido").text(data['apelido']);
+                    $("tr").append("<th >Nome</th>  <th >Apelido</th>  <th >Email</th>  <th >Telefone</th> <th >Botoes</th>");
+                    $.each(data, function (index, value) {
+                        console.log(value.apelido);
 
-                    $("#email").text(data['email']);
+                        $("tbody").append('<tr><td>' + value.nomeCompleto + '</td><td>' + value.apelido + '</td><td>'
+                            + value.email + '</td><td>' + value.telefoneDeContato + '</td> <td>' +
+                            '<input type=button onclick=deletar() value=Delete '+'/'+ '>' + ' </td></tr> ');
 
-                    $("#telefone").text(data['telefoneDeContato']);
+
+
+
+                    });
+
+
+
                 },
                 error: function (err) {
                     console.error(error)
@@ -50,9 +154,17 @@
 
 
             })
-          
+
         }
-           
+
     </script>
+
+<script>
+    function deletar() {
+
+        alert("deu certo");
+       
+    }
+</script>
 
 }

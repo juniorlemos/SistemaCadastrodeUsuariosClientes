@@ -34,12 +34,11 @@ namespace SistemaCadastrodeUsuariosClientes.Services
             await _repository.Inserir(cliente);
         }
 
-        public async Task<Cliente> Visualizar(string chave)
+      
+
+        public Task<List<Cliente>> Visualizar()
         {
-            var cliente = await _repository.Visualizar(chave);
-
-            return cliente;
-
+            throw new NotImplementedException();
         }
     }
 

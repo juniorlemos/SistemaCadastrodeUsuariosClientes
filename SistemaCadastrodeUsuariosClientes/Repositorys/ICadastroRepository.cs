@@ -10,7 +10,7 @@ namespace SistemaCadastrodeUsuariosClientes.Repositorys
         Task Deletar(string id);
         Task Inserir(TEntity entidade);
         Task Editar(TEntity entidade);
-        Task<TEntity> Visualizar(string chave);
+        Task <List<TEntity>> Visualizar();
         
     }
 }
