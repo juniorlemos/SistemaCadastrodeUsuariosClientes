@@ -81,11 +81,12 @@ namespace SistemaCadastrodeUsuariosClientes.Controllers
 
 
         [HttpDelete]
-        public async Task<IActionResult> Deletar(string email) 
+        public async Task<IActionResult> Deletar( string email) 
         {
-            await _service.Deletar(email);
+            var teste = email;
+            await _service.Deletar(teste);
 
-            return RedirectToAction(nameof(Index));
+            return Json(new { nome = "deuCerto" });
         }
 
     }

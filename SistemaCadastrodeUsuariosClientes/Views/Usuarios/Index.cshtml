@@ -73,27 +73,64 @@
 
 <h1> Usuario Index</h1>
 
-<div>
-    <h1> hello from uisualizar</h1>
 
-    <div>
-        <h2>Nome</h2> - <h2 id="nome"></h2>
-        <h2>Apelido</h2> - <h2 id="apelido"></h2>
-        <h2>Email</h2> - <h2 id="email"></h2>
-        <h2>Telefone</h2> - <h2 id="telefone"></h2>
-    </div>
-
-    <input type="button" onclick="BtnClick()" value="Clik-me" />
-
-</div>
 
 <button type="button" class="btn btn-danger">DELETE</button>
+
+<!-- Botão para acionar modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#AdicionarUsuario">
+   Adicionar usuario
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="AdicionarUsuario" tabindex="-1" role="dialog" aria-labelledby="AdicionarUsuarioLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header  ">
+                <h5 class="col-12 modal-title text-center" id="AdicionarUsuarioLabel">USUÁRIO</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+            
+                
+
+                
+                <form>
+                    <div class="form-group ">
+                        <label for="exampleInputEmail1">Endereço de email</label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Seu email">
+                        <small id="emailHelp" class="form-text text-muted">Nunca vamos compartilhar seu email, com ninguém.</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Senha</label>
+                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Senha">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Senha</label>
+                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Senha">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Senha</label>
+                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Senha">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Enviar</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                <button type="button" class="btn btn-primary">Salvar mudanças</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 <table id="tabelaUsuario" class="table">
     <thead>
-        <tr>
-        </tr>
+
     </thead>
     <tbody id="teste">
     </tbody>
@@ -114,13 +151,13 @@
     <script>
 
         $("#tabelaUsuario").ready(function () {
-          BtnClick();
+            BtnClick();
         });
-        
-                 
+
+
     </script>
 
-        <script>
+    <script>
         function BtnClick() {
 
             $.ajax({
@@ -132,13 +169,13 @@
                     console.log(data);
 
 
-                    $("tr").append("<th >Nome</th>  <th >Apelido</th>  <th >Email</th>  <th >Telefone</th> <th >Botoes</th>");
+                    $("thead").append("<tr> <th >Nome</th>  <th >Apelido</th>  <th >Email</th>  <th >Telefone</th> <th >Botoes</th> </tr>");
                     $.each(data, function (index, value) {
                         console.log(value.apelido);
 
                         $("tbody").append('<tr><td>' + value.nomeCompleto + '</td><td>' + value.apelido + '</td><td>'
                             + value.email + '</td><td>' + value.telefoneDeContato + '</td> <td>' +
-                            '<input type=button onclick=deletar() value=Delete '+'/'+ '>' + ' </td></tr> ');
+                            '<input type=button id=' + value.email + ' onclick=deletar(this.id) value=Delete ' + '/' + '>' + ' </td></tr> ');
 
 
 
@@ -159,12 +196,39 @@
 
     </script>
 
-<script>
-    function deletar() {
+    <script>
+        function deletar(email) {
 
-        alert("deu certo");
-       
-    }
-</script>
+            console.log(email);
+            var data = JSON.stringify(email);
+            console.log(data);
 
+            $.ajax({
+                url: "/Usuarios/Deletar",
+                type: "DELETE",
+                data: { 'email': email },
+                success: function (msg) {
+
+
+                    $("thead").empty();
+                    $("tbody").empty();
+                    BtnClick();
+                }
+
+            });
+        }
+    </script>
+
+    <script>
+        function tabela() {
+
+
+            $("thead").empty();
+            $("tbody").empty();
+            BtnClick();
+        }
+
+
+
+    </script>
 }
