@@ -12,5 +12,7 @@ namespace SistemaCadastrodeUsuariosClientes.Repositorys
         Task Editar(TEntity entidade);
         Task <List<TEntity>> Visualizar();
         
+        Task<TEntity> VisualizarId(string id );
+
     }
 }

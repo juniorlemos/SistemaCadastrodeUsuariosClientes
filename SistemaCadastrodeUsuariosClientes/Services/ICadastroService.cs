@@ -12,5 +12,6 @@ namespace SistemaCadastrodeUsuariosClientes.Services
         Task<List<TEntity>> Visualizar();
         Task Editar(TEntity objeto);
 
+        Task<TEntity> VisualizarId(string id);
     }
 }

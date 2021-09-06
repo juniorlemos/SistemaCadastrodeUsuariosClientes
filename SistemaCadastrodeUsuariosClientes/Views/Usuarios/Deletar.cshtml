@@ -6,18 +6,45 @@
 
 <form id="friendform">
     <table>
-       
+
         <tr>
             <td>State</td>
             <td><input id="email" name="Email" type="text" /></td>
         </tr>
-        
+
     </table>
     <input id="btnsubmit" type="button" value="Submit" />
 </form>
 
 
+<form id="atualizarUsuario">
 
+    <div class="form-group ">
+        <label for="nomeCompleto">Nome Completo</label>
+        <input type="text" name="NomeCompleto" class="form-control form-control-border border-width-2" id="nomeCompleto" placeholder="Digite seu Nome Completo">
+    </div>
+    <div class="form-group">
+        <label for="apelido">Apelido</label>
+        <input type="text" name="Apelido" class="form-control form-control-border border-width-2" id="apelido" placeholder="Digite seu Apelido ">
+    </div>
+
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" name="Email" class="form-control form-control-border border-width-2" id="email" placeholder="Digite seu Email">
+    </div>
+    <div class="form-group">
+        <label for="telefone">Telefone</label>
+        <input type="tel" name="TelefoneDeContato" class="form-control form-control-border border-width-2" id="telefone" pattern="\([0-9]{2}\)[0-9]{4,6}-[0-9]{3,4}$" placeholder="digite seu telefone">
+    </div>
+
+
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+        <button id="btnsubmit" type="button" class="btn btn-primary">Salvar</button>
+
+    </div>
+
+</form>
 
 
 @section Scripts {
@@ -28,17 +55,17 @@
 
         $(document).ready(function () {
             $("#btnsubmit").click(function (e) {
-                
+
                 var valdata = $("#friendform").serialize();
-              
+
                 $.ajax({
                     url: "/Usuarios/Deletar",
                     type: "DELETE",
                     data: valdata,
-                 
+
                 });
 
-                 $('#friendform').each(function () {
+                $('#friendform').each(function () {
                     this.reset();
                 });
 

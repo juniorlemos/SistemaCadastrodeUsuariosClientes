@@ -37,6 +37,16 @@ namespace SistemaCadastrodeUsuariosClientes.Controllers
         }
 
 
+        [HttpGet]
+        public async Task<IActionResult> VisualizarId(string email)
+        {
+           
+            var res = await _service.VisualizarId(email);
+
+
+
+            return Json(res);
+        }
 
         [HttpGet]
         public IActionResult Inserir()
@@ -67,7 +77,7 @@ namespace SistemaCadastrodeUsuariosClientes.Controllers
 
             await _service.Editar(usuario);
 
-            return RedirectToAction(nameof(Inserir));
+            return Json(new { nome = "deuCerto" });
 
         }
 
@@ -83,8 +93,8 @@ namespace SistemaCadastrodeUsuariosClientes.Controllers
         [HttpDelete]
         public async Task<IActionResult> Deletar( string email) 
         {
-            var teste = email;
-            await _service.Deletar(teste);
+            
+            await _service.Deletar(email);
 
             return Json(new { nome = "deuCerto" });
         }

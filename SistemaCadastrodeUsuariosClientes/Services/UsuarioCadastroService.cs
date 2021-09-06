@@ -42,6 +42,14 @@ namespace SistemaCadastrodeUsuariosClientes.Services
                   
 
         }
+
+        public async Task<Usuario> VisualizarId(string id )
+        {
+            return await _repository.VisualizarId(id);
+
+
+        }
+
     }
 
 }

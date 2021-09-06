@@ -50,5 +50,10 @@ namespace SistemaCadastrodeUsuariosClientes.Repositorys
         {
             throw new NotImplementedException();
         }
+
+        public Task<Cliente> VisualizarId(string id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
