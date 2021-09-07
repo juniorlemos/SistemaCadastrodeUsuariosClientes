@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
 using SistemaCadastrodeUsuariosClientes.Models;
 using SistemaCadastrodeUsuariosClientes.Services;
 using System;
@@ -7,14 +6,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-
 namespace SistemaCadastrodeUsuariosClientes.Controllers
 {
-    public class UsuariosController : Controller
+    public class ClientesController : Controller
     {
-        private readonly ICadastroService<Usuario> _service;
+        private readonly ICadastroService<Cliente> _service;
 
-        public UsuariosController(ICadastroService<Usuario> service)
+        public ClientesController(ICadastroService<Cliente> service)
         {
             _service = service;
         }
@@ -31,7 +29,7 @@ namespace SistemaCadastrodeUsuariosClientes.Controllers
 
             var res = await _service.Visualizar();
 
-            
+
 
             return Json(res);
         }
@@ -40,32 +38,32 @@ namespace SistemaCadastrodeUsuariosClientes.Controllers
         [HttpGet]
         public async Task<IActionResult> VisualizarId(string email)
         {
-           
+
             var res = await _service.VisualizarId(email);
 
 
             return Json(res);
         }
 
-       
+
 
         [HttpPost]
-        public async Task<IActionResult> Inserir([Bind("NomeCompleto,Apelido,Email,TelefoneDeContato")] Usuario usuario)
+        public async Task<IActionResult> Inserir([Bind("RazaoSocial,NomeFantasia,Cnpj,Logradouro,Numero,Bairro,Complemento,Municipio,CEP")] Cliente cliente)
         {
 
-            await _service.Inserir(usuario);
+            await _service.Inserir(cliente);
 
-            return Json(new { nome="ok"} );
+            return Json(new { nome = "ok" });
 
         }
 
-       
+
 
         [HttpPut]
-        public async Task<IActionResult> Atualizar([Bind("NomeCompleto,Apelido,Email,TelefoneDeContato")] Usuario usuario)
+        public async Task<IActionResult> Atualizar([Bind("RazaoSocial,NomeFantasia,Cnpj,Logradouro,Numero,Bairro,Complemento,Municipio,CEP")] Cliente cliente)
         {
 
-            await _service.Editar(usuario);
+            await _service.Editar(cliente);
 
             return Json(new { nome = "ok" });
 
@@ -73,9 +71,9 @@ namespace SistemaCadastrodeUsuariosClientes.Controllers
 
 
         [HttpDelete]
-        public async Task<IActionResult> Deletar( string email) 
+        public async Task<IActionResult> Deletar(string email)
         {
-            
+
             await _service.Deletar(email);
 
             return Json(new { nome = "ok" });

@@ -20,7 +20,7 @@ namespace SistemaCadastrodeUsuariosClientes.Repositorys
 
         public async Task Deletar(string id)
         {
-            var entidade = await _context.Usuario.FindAsync(id);
+            var entidade = await _context.Cliente.FindAsync(id);
             _context.Remove(entidade);
             await _context.SaveChangesAsync();
         }
@@ -46,14 +46,14 @@ namespace SistemaCadastrodeUsuariosClientes.Repositorys
 
         }
 
-        public Task<List<Cliente>> Visualizar()
+        public async Task<List<Cliente>> Visualizar()
         {
-            throw new NotImplementedException();
+            return await _context.Cliente.AsNoTracking().OrderBy(e => e.Cnpj).ToListAsync();
         }
 
-        public Task<Cliente> VisualizarId(string id)
+        public async Task<Cliente> VisualizarId(string id)
         {
-            throw new NotImplementedException();
+            return await _context.Cliente.FindAsync(id);
         }
     }
 }

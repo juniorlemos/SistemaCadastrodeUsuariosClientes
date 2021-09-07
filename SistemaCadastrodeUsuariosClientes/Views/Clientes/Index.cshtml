@@ -4,30 +4,21 @@
 @{
 }
 
-
-
-
-
-
-
-
-<h1> Usuario Index</h1>
-
-
+<h1> Clientes Index</h1>
 
 
 
 <!-- Modal Adicionar Usuario -->
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#AdicionarUsuario">
-    Adicionar usuario
+    Adicionar Cliente
 </button>
 
 
 <div class="modal fade" id="AdicionarUsuario" tabindex="-1" role="dialog" aria-labelledby="AdicionarUsuarioLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog " role="document">
         <div class="modal-content  ">
             <div class="modal-header  alert-primary">
-                <h2 class="col-12 modal-title text-center" id="AdicionarUsuarioLabel">USUÁRIO</h2>
+                <h2 class="col-12 modal-title text-center" id="AdicionarUsuarioLabel">CLIENTE</h2>
 
             </div>
             <div class="modal-body">
@@ -35,33 +26,74 @@
 
 
 
+                
+                
+                
+               
+               
+
+              
 
                 <form id="formularioUsuario">
 
-                    <div class="form-group ">
-                        <label for="nomeCompleto">Nome Completo</label>
-                        <input type="text" name="NomeCompleto" class="form-control form-control-border border-width-2" id="nomeCompleto" placeholder="Digite seu Nome Completo">
-                    </div>
-                    <div class="form-group">
-                        <label for="apelido">Apelido</label>
-                        <input type="text" name="Apelido" class="form-control form-control-border border-width-2" id="apelido" placeholder="Digite seu Apelido ">
-                    </div>
+                   
 
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" name="Email" class="form-control form-control-border border-width-2" id="email" placeholder="Digite seu Email">
-                    </div>
-                    <div class="form-group">
-                        <label for="telefone">Telefone</label>
-                        <input type="tel" name="TelefoneDeContato" class="form-control  form-control-border border-width-2" id="telefone" placeholder="digite seu telefone">
-                    </div>
+                        <div class="form-row">
+                            <div class="form-group  col-md-10">
+                                <label for="razaoSocial">RazaoSocial</label>
+                                <input type="text" name="RazaoSocial" class="form-control " id="razaoSocial" placeholder="RazaoSocial">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-7">
+                                <label for="nomeFantasia">NomeFantasia</label>
+                                <input type="text" name="NomeFantasia" class="form-control " id="nomeFantasia" placeholder="NomeFantasia ">
+                            </div>
 
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                        <button id="btnsubmit" type="button" class="btn btn-primary">Salvar</button>
+                            <div class="form-group col-md-5 ">
+                                <label for="cnpj">Cnpj</label>
+                                <input type="text" name="Cnpj" class="form-control " id="Cnpj" placeholder="Cnpj">
+                            </div>
 
-                    </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-5">
+                                <label for="logradouro">Logradouro</label>
+                                <input type="text" name="Logradouro" class="form-control  " id="logradouro" placeholder="Logradouro">
+                            </div>
+                            <div class="form-group col-md-2">
+                                <label for="numero">Número</label>
+                                <input type="text" name="Numero" class="form-control  " id="numero" placeholder="Número">
+                            </div>
+                            <div class="form-group  col-md-5">
+                                <label for="bairro">Bairro</label>
+                                <input type="text" name="Bairro" class="form-control  " id="bairro" placeholder="Bairro">
+                            </div>
 
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-4">
+                                <label for="complemento">Complemento</label>
+                                <input type="text" name="Complemento" class="form-control  " id="complemento" placeholder="Complemento">
+                            </div>
+                            <div class="form-group col-md-5">
+                                <label for="municipio">Municipio</label>
+                                <input type="text" name="Municipio" class="form-control  " id="municipio" placeholder="Municipio">
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="CEP">CEP</label>
+                                <input type="text" name="CEP" class="form-control  " id="CEP" placeholder="CEP">
+                            </div>
+
+                        </div>
+                    
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                            <button id="btnsubmit" type="button" class="btn btn-primary">Salvar</button>
+
+                        </div>
+                    
                 </form>
 
 
@@ -81,7 +113,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content  ">
             <div class="modal-header  alert-success">
-                <h2 class="col-12 modal-title text-center" id="AtualizarUsuarioLabel">USUARIO</h2>
+                <h2 class="col-12 modal-title text-center" id="AtualizarUsuarioLabel">CLIENTE</h2>
 
             </div>
             <div class="modal-body">
@@ -89,28 +121,61 @@
 
                 <form id="formAtualizarUsuario">
 
-                    <div class="form-group ">
-                        <label for="nomeCompleto">Nome Completo</label>
-                        <input type="text" name="NomeCompleto" class="form-control form-control-border border-width-2" id="nomeAtual" placeholder="Digite seu Nome Completo">
+
+
+                    <div class="form-row">
+                        <div class="form-group  col-md-10">
+                            <label for="razaoSocial">RazaoSocial</label>
+                            <input type="text" name="RazaoSocial" class="form-control " id="razaoSocial" placeholder="RazaoSocial">
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="apelido">Apelido</label>
-                        <input type="text" name="Apelido" class="form-control form-control-border border-width-2" id="apelidoAtual" placeholder="Digite seu Apelido ">
+                    <div class="form-row">
+                        <div class="form-group col-md-7">
+                            <label for="nomeFantasia">NomeFantasia</label>
+                            <input type="text" name="NomeFantasia" class="form-control " id="nomeFantasia" placeholder="NomeFantasia ">
+                        </div>
+
+                        <div class="form-group col-md-5 ">
+                            <label for="cnpj">Cnpj</label>
+                            <input type="text" name="Cnpj" class="form-control " id="Cnpj" placeholder="Cnpj">
+                        </div>
+
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-5">
+                            <label for="logradouro">Logradouro</label>
+                            <input type="text" name="Logradouro" class="form-control  " id="logradouro" placeholder="Logradouro">
+                        </div>
+                        <div class="form-group col-md-2">
+                            <label for="numero">Número</label>
+                            <input type="text" name="Numero" class="form-control  " id="numero" placeholder="Número">
+                        </div>
+                        <div class="form-group  col-md-5">
+                            <label for="bairro">Bairro</label>
+                            <input type="text" name="Bairro" class="form-control  " id="bairro" placeholder="Bairro">
+                        </div>
+
                     </div>
 
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" name="Email" class="form-control form-control-border border-width-2" id="emailAtual" placeholder="Digite seu Email">
-                    </div>
-                    <div class="form-group">
-                        <label for="telefone">Telefone</label>
-                        <input type="tel" name="TelefoneDeContato" class="form-control form-control-border border-width-2" id="telefoneAtual" placeholder="digite seu telefone">
-                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label for="complemento">Complemento</label>
+                            <input type="text" name="Complemento" class="form-control  " id="complemento" placeholder="Complemento">
+                        </div>
+                        <div class="form-group col-md-5">
+                            <label for="municipio">Municipio</label>
+                            <input type="text" name="Municipio" class="form-control  " id="municipio" placeholder="Municipio">
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="CEP">CEP</label>
+                            <input type="text" name="CEP" class="form-control  " id="CEP" placeholder="CEP">
+                        </div>
 
+                    </div>
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                        <button id="btnsubmitAtualizar" type="button" class="btn btn-success">Atualizar</button>
+                        <button id="btnsubmit" type="button" class="btn btn-primary">Salvar</button>
 
                     </div>
 

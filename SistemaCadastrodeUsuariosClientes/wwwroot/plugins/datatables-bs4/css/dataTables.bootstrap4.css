@@ -208,3 +208,14 @@ div.table-responsive > div.dataTables_wrapper > div.row > div[class^=col-]:first
 div.table-responsive > div.dataTables_wrapper > div.row > div[class^=col-]:last-child {
   padding-right: 0;
 }
+.sorting, .sorting_asc, .sorting_desc {
+    background: none;
+}
+table.dataTable thead tr:nth-child(2) th.sorting,
+table.dataTable thead tr:nth-child(2) th.sorting_asc,
+table.dataTable thead tr:nth-child(2) th.sorting_desc,
+table.dataTable thead tr:nth-child(2) th.sorting_desc:after,
+table.dataTable thead tr:nth-child(2) th.sorting_desc:before {
+    background: none;
+    content: none;
+}

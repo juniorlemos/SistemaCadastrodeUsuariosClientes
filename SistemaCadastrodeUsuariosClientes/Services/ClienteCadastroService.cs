@@ -36,14 +36,14 @@ namespace SistemaCadastrodeUsuariosClientes.Services
 
       
 
-        public Task<List<Cliente>> Visualizar()
+        public async Task<List<Cliente>> Visualizar()
         {
-            throw new NotImplementedException();
+            return await _repository.Visualizar();
         }
 
-        public Task<Cliente> VisualizarId(string id)
+        public async Task<Cliente> VisualizarId(string id)
         {
-            throw new NotImplementedException();
+            return await _repository.VisualizarId(id);
         }
     }
 

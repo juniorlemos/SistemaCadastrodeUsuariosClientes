@@ -44,7 +44,7 @@ namespace SistemaCadastrodeUsuariosClientes.Repositorys
         public async Task<List<Usuario>> Visualizar( )
         {
            
-            return await _context.Usuario.AsNoTracking().ToListAsync();
+            return await _context.Usuario.AsNoTracking().OrderBy(e=>e.NomeCompleto).ToListAsync();
 
 
         }
