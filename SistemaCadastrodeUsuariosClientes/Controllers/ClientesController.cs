@@ -36,10 +36,10 @@ namespace SistemaCadastrodeUsuariosClientes.Controllers
 
 
         [HttpGet]
-        public async Task<IActionResult> VisualizarId(string email)
+        public async Task<IActionResult> VisualizarId(string cnpj)
         {
 
-            var res = await _service.VisualizarId(email);
+            var res = await _service.VisualizarId(cnpj);
 
 
             return Json(res);
@@ -71,10 +71,10 @@ namespace SistemaCadastrodeUsuariosClientes.Controllers
 
 
         [HttpDelete]
-        public async Task<IActionResult> Deletar(string email)
+        public async Task<IActionResult> Deletar(string cnpj)
         {
 
-            await _service.Deletar(email);
+            await _service.Deletar(cnpj);
 
             return Json(new { nome = "ok" });
         }
