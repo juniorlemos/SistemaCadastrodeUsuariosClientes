@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using SistemaCadastrodeUsuariosClientes.Models;
 using System;
 using System.Collections.Generic;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace SistemaCadastrodeUsuariosClientes.Data
 {
-    public class SistemaContext:DbContext
+    public class SistemaContext: IdentityDbContext
     {
         public SistemaContext(DbContextOptions<SistemaContext> options)
             : base(options)
