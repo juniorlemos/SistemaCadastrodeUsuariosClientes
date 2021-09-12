@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using SistemaCadastrodeUsuariosClientes.Models;
 using SistemaCadastrodeUsuariosClientes.Services;
@@ -10,6 +11,7 @@ using System.Threading.Tasks;
 
 namespace SistemaCadastrodeUsuariosClientes.Controllers
 {
+    [Authorize]
     public class UsuariosController : Controller
     {
         private readonly ICadastroService<Usuario> _service;
@@ -18,7 +20,7 @@ namespace SistemaCadastrodeUsuariosClientes.Controllers
         {
             _service = service;
         }
-
+        
         public IActionResult Index()
         {
             return View();

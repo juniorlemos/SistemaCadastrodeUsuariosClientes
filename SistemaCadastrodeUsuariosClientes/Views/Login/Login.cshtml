@@ -1,0 +1,98 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+
+
+<div class="d-flex justify-content-center pt-4">
+    <div class="login-box ">
+
+        <!-- /.login-logo -->
+        <div class="card  card-navy">
+            <div class="card-header text-center">
+                <h1> <b>Admin</b>Sistema</h1>
+            </div>
+            <div class="card-body">
+                <p class="login-box-msg">Realize o Login e entre no sistema</p>
+
+                <form id="formularioLogin">
+                    <div class="input-group mb-3">
+                        <input type="text" name="Usuario"  id="usuario" class="form-control" placeholder="Login">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-user"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-group mb-3">
+                        <input type="password" name="Senha" id="senha" class="form-control" placeholder="Password">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-lock"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                 
+                        <div class="col-4">
+                            <button type="button"  id="btnsubmit" class="btn btn-primary btn-block">Entrar</button>
+                        </div>
+                       
+
+                    </div>
+                </form>
+
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+    </div>
+</div>
+
+
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+
+<script>
+
+
+        $("#btnsubmit").click(function (e) {
+            var valdata = $("#formularioLogin").serialize();
+
+            $.ajax({
+                url: "/Login/Login",
+                type: "POST",
+                data: valdata,
+                success: function (resposta) {
+
+                     
+                    if (resposta.success == true) {
+                        var url = '@Url.Action("Index", "Home")';
+                        window.location.href = url;
+
+                    }
+                    else {
+                        toastr.error("Erro Usuario ou Senha incorreto");
+                    }
+                    
+         
+
+                },
+                error: function (err) {
+                    toastr.error("Algum erro inesperado surgiu");
+
+                }
+
+            });
+
+        });
+
+</script>
+
+}

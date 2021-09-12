@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using SistemaCadastrodeUsuariosClientes.Models;
 using SistemaCadastrodeUsuariosClientes.Services;
 using System;
@@ -8,6 +9,8 @@ using System.Threading.Tasks;
 
 namespace SistemaCadastrodeUsuariosClientes.Controllers
 {
+    [Authorize]
+
     public class ClientesController : Controller
     {
         private readonly ICadastroService<Cliente> _service;

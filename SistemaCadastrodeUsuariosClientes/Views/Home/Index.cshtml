@@ -1,18 +1,59 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
-   
-    
-    }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+
+}
+
+
+
+
+<div class=" text-center row justify-content-md-center">
+
+    <h1 class="font-italic col-11 col align-self-center">Seja Bem vindo  @ViewBag.usuario </h1>
+    <button type="button"  id="btnsubmit" class="btn btn-primary col align-self-end">Logout</button>
+
 </div>
-<div class="info-box">
-    <!-- Apply any bg-* class to to the icon to color it -->
-    <span class="info-box-icon bg-red"><i class="fa fa-star-o"></i></span>
-    <div class="info-box-content">
-        <span class="info-box-text">Likes</span>
-        <span class="info-box-number">93,139</span>
-    </div><!-- /.info-box-content -->
-</div><!-- /.info-box -->
+
+
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+
+    <script>
+
+
+        $("#btnsubmit").click(function (e) {
+            
+
+            $.ajax({
+                url: "/Login/Logout",
+                type: "POST",
+                
+                success: function (resposta) {
+
+
+                    if (resposta.success == true) {
+                        var url = '@Url.Action("Login", "Login")';
+                        window.location.href = url;
+
+                    }
+                   
+
+
+                },
+                error: function (err) {
+                    toastr.error("Algum erro inesperado surgiu");
+
+                }
+
+            });
+
+        });
+
+    </script>
+
+}
+

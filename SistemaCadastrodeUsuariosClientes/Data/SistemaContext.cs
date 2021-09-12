@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace SistemaCadastrodeUsuariosClientes.Data
 {
-    public class SistemaContext: IdentityDbContext
+    public class SistemaContext: DbContext
     {
         public SistemaContext(DbContextOptions<SistemaContext> options)
             : base(options)

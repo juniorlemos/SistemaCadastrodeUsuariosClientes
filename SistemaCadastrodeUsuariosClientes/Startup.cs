@@ -30,6 +30,8 @@ namespace SistemaCadastrodeUsuariosClientes
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddScoped<ILoginService<Login>, LoginService>();
+            services.AddScoped<ILoginRepository <Login>,LoginRepository>();
             services.AddScoped<ICadastroService<Cliente>, ClienteCadastroService>();
             services.AddScoped<ICadastroService<Usuario>, UsuarioCadastroService>();
             services.AddScoped<ICadastroRepository<Usuario>, UsuarioRepository>();
@@ -40,10 +42,14 @@ namespace SistemaCadastrodeUsuariosClientes
             services.AddDbContext<SistemaContext>(options =>
     options.UseSqlServer(Configuration.GetConnectionString("ConnectionString")));
 
-            services.AddIdentity<IdentityUser, IdentityRole>()
-    .AddEntityFrameworkStores<SistemaContext>()
-    .AddDefaultTokenProviders();
-
+            services.AddAuthentication("CookieAuthentication")
+                  .AddCookie("CookieAuthentication", config =>
+                  {
+                      config.Cookie.Name = "UserLoginCookie";
+                      config.LoginPath = "/Login/Login";
+                      
+                  
+                  });
 
         }
 
@@ -74,7 +80,7 @@ namespace SistemaCadastrodeUsuariosClientes
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Login}/{action=Login}/{id?}");
             });
         }
     }
