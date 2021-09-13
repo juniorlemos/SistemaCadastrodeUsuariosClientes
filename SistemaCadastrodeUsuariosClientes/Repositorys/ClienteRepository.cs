@@ -40,11 +40,7 @@ namespace SistemaCadastrodeUsuariosClientes.Repositorys
 
         }
 
-        public async Task<Cliente> Visualizar(string chave)
-        {
-            return await _context.Cliente.FindAsync(chave);
-
-        }
+      
 
         public async Task<List<Cliente>> Visualizar()
         {
