@@ -1,3 +1,3 @@
 # SistemaCadastrodeUsuariosClientes
-Sistema de Cadastro de Usuários e Clientes com login utilizando cookies
+Sistema para cadastro de Usuários e Clientes com login utilizando cookies
 
